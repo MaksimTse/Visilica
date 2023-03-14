@@ -27,7 +27,7 @@ def new():
     word_list = [a, b, c]
     word = random.choice(random.choice(word_list))
     
-    #Tühjendage oletuskirje ja tulemuse silt
+    #Tühjendage guess kirje ja result silt
     guess_entry.delete(0, END)
     result_lbl.config(text='')
     
@@ -42,7 +42,7 @@ def check_guess():
     global guesses
     global mis
     
-    #Hankige oletus sisestuskastist
+    #Hankige guess sisestuskastist
     guess = guess_entry.get().lower()
     
     #Tühjendage guess kirje
@@ -59,7 +59,7 @@ def check_guess():
     #Lisage oletus oletuste loendisse
     guesses += guess
     
-    # Kontrollige, kas oletus on sõna järjendis
+    # Kontrollige, kas guess on sõna järjendis
     if guess in word:
         #Värskendage sõna silt õige oletusega
         display_word = ''
@@ -90,7 +90,7 @@ word_lbl = Label(mang, text='',bg='#8c8c8c',font='Arial 18')
 guess_entry = Entry(mang, width=1,font='Arial 12')
 check_btn = Button(mang, text='Kontrollima', bg='#d7f7ed',width='14',font='Arial 12',command=check_guess)
 result_lbl = Label(mang, text='',bg='#8c8c8c')
-mis_lbl = Label(mang, text=f'Mistakes: {mis}/{max_mis}',fg='#00bf13',bg='#d4d6d5',font='Arial 12',width='14')
+mis_lbl = Label(mang, text=f'Vaed: {mis}/{max_mis}',fg='#00bf13',bg='#d4d6d5',font='Arial 12',width='14')
 new_btn = Button(mang, text='Uus mäng', bg='#ecffcf',fg='#03bf00',width='18',font='Arial 12',command=new)
 
 new()
