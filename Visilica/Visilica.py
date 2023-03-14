@@ -51,11 +51,9 @@ def check_guess():
     if len(guess) != 1:
         result_lbl.config(text='Palun sisestage üks täht.')
         
-    
     if guess in guesses:
         result_lbl.config(text='Sa juba arvasid seda kirja.')
         
-    
     #Lisage oletus oletuste loendisse
     guesses += guess
     
