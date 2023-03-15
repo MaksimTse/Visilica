@@ -1,6 +1,7 @@
 from tkinter import *
 import random
-
+import turtle
+t = turtle.Turtle()
 mang = Tk()
 mang.title('Arva ära Sõna!')
 
@@ -50,10 +51,8 @@ def check_guess():
     
     if len(guess) != 1:
         result_lbl.config(text='Palun sisestage üks täht.')
-        
     if guess in guesses:
-        result_lbl.config(text='Sa juba arvasid seda kirja.')
-        
+        result_lbl.config(text='Sa juba arvasid seda kirja.') 
     #Lisage oletus oletuste loendisse
     guesses += guess
     
@@ -79,28 +78,66 @@ def check_guess():
         mis += 1
         mis_lbl.config(text=f'Vead: {mis}/{max_mis}',fg='red')
         
+        if mis == 1:
+            tahvel1=Canvas(mang,width=320,height=320,bg='#8c8c8c')
+            img=PhotoImage(file='shield-png-1.png')
+            tahvel1.create_image(2,2,image=img,anchor=NW)
+            tahvel1.grid(row=0,column=1)
+        elif mis == 2:
+            tahvel2=Canvas(mang,width=320,height=320,bg='#8c8c8c')
+            img=PhotoImage(file='shield-png-1.png')
+            tahvel2.create_image(2,2,image=img,anchor=NW)
+            tahvel2.grid(row=0,column=1)
+        elif mis == 3:
+            tahvel3=Canvas(mang,width=320,height=320,bg='#8c8c8c')
+            img=PhotoImage(file='shield-png-1.png')
+            tahvel3.create_image(2,2,image=img,anchor=NW)
+            tahvel3.grid(row=0,column=1)
+        elif mis == 4:
+            tahvel4=Canvas(mang,width=320,height=320,bg='#8c8c8c')
+            img=PhotoImage(file='shield-png-1.png')
+            tahvel4.create_image(2,2,image=img,anchor=NW)
+            tahvel4.grid(row=0,column=1)
+        elif mis == 5:
+            tahvel5=Canvas(mang,width=320,height=320,bg='#8c8c8c')
+            img=PhotoImage(file='shield-png-1.png')
+            tahvel5.create_image(2,2,image=img,anchor=NW)
+            tahvel5.grid(row=0,column=1)
+        
         #Kontrollige, kas mängija on kaotanud
         if mis >= max_mis:
             result_lbl.config(text=f'Mäng läbi. Sõna oli {word}!.',font='Arial 15')
 
-instructions_lbl = Label(mang, text='Arva ära sõna!',font='Arial 15',bg='#8c8c8c', fg='#404040')      
-word_lbl = Label(mang, text='',bg='#8c8c8c',font='Arial 18')
-guess_entry = Entry(mang, width=1,font='Arial 12')
-check_btn = Button(mang, text='Kontrollima', bg='#d7f7ed',width='14',font='Arial 12',command=check_guess)
-result_lbl = Label(mang, text='',bg='#8c8c8c')
-mis_lbl = Label(mang, text=f'Vaed: {mis}/{max_mis}',fg='#00bf13',bg='#d4d6d5',font='Arial 12',width='14')
-new_btn = Button(mang, text='Uus mäng', bg='#ecffcf',fg='#03bf00',width='18',font='Arial 12',command=new)
+f=Frame(mang,bg='#8c8c8c')
+
+instructions_lbl = Label(f, text='Arva ära sõna!',font='Arial 15',bg='#8c8c8c', fg='#404040')
+instructions_lbl.pack(pady=10)
+
+word_lbl = Label(f, text='',bg='#8c8c8c',font='Arial 18')
+word_lbl.pack(pady=10)
+
+guess_entry = Entry(f, width=1,font='Arial 12')
+guess_entry.pack(pady=10)
+
+check_btn = Button(f, text='Kontrollima', bg='#d7f7ed',width='14',font='Arial 12',command=check_guess)
+check_btn.pack(pady=10)
+
+result_lbl = Label(f, text='',bg='#8c8c8c')
+result_lbl.pack(pady=8)
+
+mis_lbl = Label(f, text=f'Vaed: {mis}/{max_mis}',fg='#00bf13',bg='#d4d6d5',font='Arial 12',width='14')
+mis_lbl.pack(pady=8)
+
+new_btn = Button(f, text='Uus mäng', bg='#ecffcf',fg='#03bf00',width='18',font='Arial 12',command=new)
+new_btn.pack(pady=100)
+
+new_btn = Label(f, bg='#8c8c8c',width='70')
+new_btn.pack(pady=5)
+
+f.grid(row=0,column=4)
 
 new()
 
-instructions_lbl.pack(pady=10)
-word_lbl.pack(pady=10)
-guess_entry.pack(pady=10)
-check_btn.pack(pady=10)
-result_lbl.pack(pady=8)
-mis_lbl.pack(pady=8)
-new_btn.pack(pady=10)
-
-mang.geometry('500x500')
+mang.geometry('900x500')
 mang.configure(background='#8c8c8c')
 mang.mainloop()
